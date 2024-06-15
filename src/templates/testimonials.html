@@ -1,0 +1,105 @@
+{% extends "layout.html" %} {% block body %}
+<!-- Testimonials Section -->
+<section id="testimonials" class="testimonials section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Testimonials</h2>
+        <p>Our Valuable clients thoughts about our project.</p>
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="swiper">
+            <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              }
+            }
+          </script>
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <img src="{{url_for('static',filename='img/testimonials/testimonials-1.jpg')}}"
+                            class="testimonial-img" alt="">
+                        <h3>Saul Goodman</h3>
+                        <h4>Ceo &amp; Founder</h4>
+                        <div class="stars">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                class="bi bi-star-fill"></i>
+                        </div>
+                        <p>
+                            <i class="bi bi-quote quote-icon-left"></i>
+                            <span>I couldn't believe how effortlessly I could communicate with people from different
+                                parts of the
+                                world using this language translator tool. It's truly a game-changer for anyone working
+                                in an
+                                international setting!</span>
+                            <i class="bi bi-quote quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div><!-- End testimonial item -->
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <img src="{{url_for('static',filename='img/testimonials/testimonials-4.jpg')}}"
+                            class="testimonial-img" alt="">
+                        <h3>Matt Brandon</h3>
+                        <h4>Freelancer</h4>
+                        <div class="stars">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                class="bi bi-star-fill"></i>
+                        </div>
+                        <p>
+                            <i class="bi bi-quote quote-icon-left"></i>
+                            <span>As someone who loves exploring new cultures and languages, this translator has become
+                                my go-to
+                                companion. It's accurate, fast, and has opened up a world of possibilities for
+                                me.</span>
+                            <i class="bi bi-quote quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div><!-- End testimonial item -->
+
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <img src="{{url_for('static',filename='img/testimonials/testimonials-5.jpg')}}"
+                            class="testimonial-img" alt="">
+                        <h3>John Larson</h3>
+                        <h4>Entrepreneur</h4>
+                        <div class="stars">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                class="bi bi-star-fill"></i>
+                        </div>
+                        <p>
+                            <i class="bi bi-quote quote-icon-left"></i>
+                            <span>This language translator has made it so much easier for me to connect with my
+                                colleagues and
+                                friends who speak different languages. I feel more confident and inclusive in
+                                conversations now,
+                                thanks to this amazing tool!</span>
+                            <i class="bi bi-quote quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div><!-- End testimonial item -->
+
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+    </div>
+
+</section><!-- /Testimonials Section -->
+{% endblock %}

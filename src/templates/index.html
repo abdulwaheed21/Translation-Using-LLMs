@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation App</title>
+    <!-- Bootstrap v5.3 CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            background: linear-gradient(45deg, #4b6cb7, #182848);
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            /* background-color: #343a40; */
+        }
+
+        nav a.navbar-brand,
+        nav a.nav-link {
+            text-decoration: none !important;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #007bff;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        textarea {
+            width: 100%;
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            padding: 12px;
+            font-size: 18px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #text,
+        #translation-result {
+            margin-top: 10px;
+            border: 1px solid #ced4da;
+            padding: 10px;
+            width: 100%;
+            color: #333;
+        }
+
+        #translate-button {
+            background: linear-gradient(to right, #007bff, #00bcd4);
+            border: none;
+            color: #fff;
+        }
+
+        .icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        #translate-button:hover {
+            background: linear-gradient(to right, #0056b3, #0074cc);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Translator App</a>
+            </div>
+
+        </nav>
+    </div>
+    <div class="container">
+        <h1 class="mb-4"><i class="icon fas fa-language"></i> English to Urdu Translation</h1>
+
+        <div class="form-group">
+            <label for="text" class="text-white">Enter English Text:</label>
+            <textarea class="form-control" id="text" rows="4"></textarea>
+        </div>
+
+        <button type="button" id="translate-button" class="btn btn-primary">Translate <i
+                class="icon fas fa-chevron-right"></i></button>
+
+        <div class="form-group mt-3">
+            <label for="translation-result" class="text-white">Translation:</label>
+            <textarea class="form-control" id="translation-result" rows="4" readonly></textarea>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 Translation App. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap and Popper.js scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function translate() {
+                var text = document.getElementById('text').value;
+                fetch('/translate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ 'text': text }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('translation-result').value = data.translation;
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+
+            document.getElementById('translate-button').addEventListener('click', translate);
+        });
+    </script>
+</body>
+
+</html>
